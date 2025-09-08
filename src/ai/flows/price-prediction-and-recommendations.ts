@@ -19,7 +19,9 @@ export type PricePredictionAndRecommendationsInput = z.infer<
 >;
 
 const PricePredictionAndRecommendationsOutputSchema = z.object({
-  priceForecast: z.string().describe('The predicted price for the crop.'),
+  priceForecast: z
+    .string()
+    .describe('The predicted price for the crop in Rupees (₹).'),
   recommendations: z
     .string()
     .describe(
@@ -40,7 +42,7 @@ const prompt = ai.definePrompt({
   name: 'pricePredictionAndRecommendationsPrompt',
   input: {schema: PricePredictionAndRecommendationsInputSchema},
   output: {schema: PricePredictionAndRecommendationsOutputSchema},
-  prompt: `You are an expert agricultural economist. Based on historical price trends, seasonal data, and weather patterns, provide a price forecast for {{cropType}} in {{location}} and recommendations for when to sell the crop for the best possible price.
+  prompt: `You are an expert agricultural economist. Based on historical price trends, seasonal data, and weather patterns, provide a price forecast for {{cropType}} in {{location}} and recommendations for when to sell the crop for the best possible price. The price should be in Indian Rupees (₹).
 `,
 });
 

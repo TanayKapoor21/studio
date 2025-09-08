@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -9,6 +9,9 @@ import {
   Settings,
   DollarSign,
   Thermometer,
+  Handshake,
+  Combine,
+  Network,
 } from 'lucide-react';
 
 import {
@@ -18,7 +21,6 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
 const mainLinks = [
@@ -27,6 +29,9 @@ const mainLinks = [
   { href: '/price-prediction', label: 'Price Prediction', icon: DollarSign },
   { href: '/environment', label: 'Environment', icon: Thermometer },
   { href: '/crop-recommendation', label: 'Crop Suggestion', icon: Sprout },
+  { href: '/agrimarket', label: 'AgriMarket', icon: Handshake },
+  { href: '/digital-twin', label: 'Digital Twin', icon: Combine },
+  { href: '/iot-connect', label: 'IoT Connect', icon: Network },
 ];
 
 const bottomLinks = [

@@ -13,6 +13,9 @@ import {
   DollarSign,
   Thermometer,
   Sprout,
+  Handshake,
+  Combine,
+  Network,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -57,6 +60,36 @@ const features = [
       hint: 'sprout soil',
     },
   },
+  {
+    title: 'AgriMarket',
+    description: 'A secure platform for contract farming and direct market access.',
+    href: '/agrimarket',
+    icon: Handshake,
+    image: {
+      src: 'https://picsum.photos/601/401',
+      hint: 'handshake deal',
+    },
+  },
+  {
+    title: 'Digital Twin',
+    description: 'Create a digital replica of your farm for advanced monitoring.',
+    href: '/digital-twin',
+    icon: Combine,
+    image: {
+      src: 'https://picsum.photos/601/402',
+      hint: 'digital farm',
+    },
+  },
+   {
+    title: 'IoT Connect',
+    description: 'Connect and manage your IoT devices for real-time farm data.',
+    href: '/iot-connect',
+    icon: Network,
+    image: {
+      src: 'https://picsum.photos/602/402',
+      hint: 'iot sensors',
+    },
+  },
 ];
 
 export default function DashboardPage() {
@@ -73,7 +106,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {features.map(feature => (
           <Card key={feature.href} className="flex flex-col overflow-hidden">
             <div className="relative h-48 w-full">

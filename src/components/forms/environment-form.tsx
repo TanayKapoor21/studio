@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import {useState, useEffect, useRef} from 'react';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {
   Form,
@@ -13,9 +13,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
+import {Input} from '@/components/ui/input';
+import {Button} from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -23,15 +22,14 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
-import { runEnvironmentalMonitoring } from '@/lib/actions';
-import type { EnvironmentalMonitoringInsightsOutput } from '@/ai/flows/environmental-monitoring-insights';
-import { Loader2, Zap } from 'lucide-react';
+import {useToast} from '@/hooks/use-toast';
+import {runEnvironmentalMonitoring} from '@/lib/actions';
+import type {EnvironmentalMonitoringInsightsOutput} from '@/ai/flows/environmental-monitoring-insights';
+import {Loader2, Zap, Upload} from 'lucide-react';
+import Image from 'next/image';
 
 const formSchema = z.object({
-  remoteSensingData: z
-    .string()
-    .min(20, 'Please provide more remote sensing data.'),
+  satelliteImage: z.string().min(1, 'Please upload a satellite image.'),
   cropType: z.string().min(2, 'Crop type is required.'),
   location: z.string().min(2, 'Location is required.'),
 });
@@ -42,13 +40,14 @@ export function EnvironmentForm() {
   const [result, setResult] =
     useState<EnvironmentalMonitoringInsightsOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const {toast} = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [preview, setPreview] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      remoteSensingData:
-        'Sentinel-2 L2A data, NDVI: 0.65, Thermal band shows 5°C anomaly, air quality index: 150 (Moderate)',
+      satelliteImage: '',
       cropType: '',
       location: '',
     },
@@ -58,7 +57,7 @@ export function EnvironmentForm() {
     try {
       const savedSettings = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (savedSettings) {
-        const { defaultLocation, defaultCrop } = JSON.parse(savedSettings);
+        const {defaultLocation, defaultCrop} = JSON.parse(savedSettings);
         if (defaultLocation) form.setValue('location', defaultLocation);
         if (defaultCrop) form.setValue('cropType', defaultCrop);
       }
@@ -66,6 +65,19 @@ export function EnvironmentForm() {
       console.error('Failed to parse settings from localStorage', error);
     }
   }, [form]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const dataUri = reader.result as string;
+        form.setValue('satelliteImage', dataUri);
+        setPreview(dataUri);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
@@ -100,28 +112,52 @@ export function EnvironmentForm() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
-                name="remoteSensingData"
-                render={({ field }) => (
+                name="satelliteImage"
+                render={() => (
                   <FormItem>
-                    <FormLabel>Remote Sensing Data</FormLabel>
+                    <FormLabel>Satellite Image</FormLabel>
                     <FormControl>
-                      <Textarea
-                        placeholder="Paste or describe remote sensing data here..."
-                        {...field}
-                        rows={6}
-                      />
+                      <div>
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          ref={fileInputRef}
+                          onChange={handleFileChange}
+                          className="hidden"
+                          id="file-upload"
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="w-full"
+                        >
+                          <Upload className="mr-2 h-4 w-4" />
+                          Upload Image from Google Earth Engine
+                        </Button>
+                      </div>
                     </FormControl>
                     <FormDescription>
-                      Include NDVI, thermal data, pollution levels etc.
+                      Upload a satellite image of your farm.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              {preview && (
+                <div className="relative mt-4 h-48 w-full">
+                  <Image
+                    src={preview}
+                    alt="Satellite image preview"
+                    fill
+                    className="rounded-md object-cover"
+                  />
+                </div>
+              )}
               <FormField
                 control={form.control}
                 name="cropType"
-                render={({ field }) => (
+                render={({field}) => (
                   <FormItem>
                     <FormLabel>Crop Type</FormLabel>
                     <FormControl>
@@ -134,7 +170,7 @@ export function EnvironmentForm() {
               <FormField
                 control={form.control}
                 name="location"
-                render={({ field }) => (
+                render={({field}) => (
                   <FormItem>
                     <FormLabel>Location</FormLabel>
                     <FormControl>

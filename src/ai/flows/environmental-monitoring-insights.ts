@@ -5,16 +5,18 @@
  *
  * - environmentalMonitoringInsights - A function that orchestrates the retrieval, filtering, and presentation of environmental insights.
  * - EnvironmentalMonitoringInsightsInput - The input type for the environmentalMonitoringInsights function.
- * - EnvironmentalMonitoringInsightsOutput - The return type for the environmentalMonitoringInsights function.
+ * - EnvironmentalMonitoringInsightsOutput - The return type for the environmentalMonitoringInsightsOutput function.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const EnvironmentalMonitoringInsightsInputSchema = z.object({
-  remoteSensingData: z
+  satelliteImage: z
     .string()
-    .describe('Remote sensing data as a string.'),
+    .describe(
+      "A satellite image of the farm, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
+    ),
   cropType: z.string().describe('The type of crop being monitored.'),
   location: z.string().describe('The location of the farm.'),
 });
@@ -24,7 +26,11 @@ export type EnvironmentalMonitoringInsightsInput = z.infer<
 >;
 
 const EnvironmentalMonitoringInsightsOutputSchema = z.object({
-  insights: z.string().describe('AI-filtered environmental insights.'),
+  insights: z
+    .string()
+    .describe(
+      'AI-filtered environmental insights based on the satellite image, including thermal stress, pollution, and environmental impact.'
+    ),
 });
 
 export type EnvironmentalMonitoringInsightsOutput = z.infer<
@@ -41,15 +47,15 @@ const prompt = ai.definePrompt({
   name: 'environmentalMonitoringInsightsPrompt',
   input: {schema: EnvironmentalMonitoringInsightsInputSchema},
   output: {schema: EnvironmentalMonitoringInsightsOutputSchema},
-  prompt: `You are an AI assistant helping farmers understand environmental impacts on their crops.
+  prompt: `You are an AI assistant using remote sensing data for environmental monitoring. Analyze the provided satellite image from Google Earth Engine (represented by the media file).
 
-  Given the remote sensing data, crop type, and location, filter the data to provide only the most relevant insights.
+  Based on the image, crop type, and location, generate insights about thermal stress, pollution, and the overall environmental impact on the crops.
 
-  Remote Sensing Data: {{{remoteSensingData}}}
   Crop Type: {{{cropType}}}
   Location: {{{location}}}
+  Satellite Image: {{media url=satelliteImage}}
 
-  Insights:`, // Instruction to generate insights.
+  Provide detailed insights below:`,
 });
 
 const environmentalMonitoringInsightsFlow = ai.defineFlow(
