@@ -13,8 +13,8 @@ import {
   Combine,
   Network,
   Bug,
-  BrainCircuit,
 } from 'lucide-react';
+import { Logo } from '@/components/logo';
 
 import {
   SidebarHeader,
@@ -47,8 +47,8 @@ export function SidebarNav() {
     <>
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-            <BrainCircuit className="h-7 w-7 text-primary" />
+          <div className="flex h-12 w-12 items-center justify-center">
+            <Logo className="h-10 w-10 text-primary" />
           </div>
           <span className="text-lg font-bold text-foreground group-data-[collapsible=icon]:hidden">
             Agrisage
