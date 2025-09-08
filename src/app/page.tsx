@@ -28,7 +28,7 @@ const features = [
     icon: Leaf,
     image: {
       src: 'https://picsum.photos/600/400',
-      hint: 'fertilizer field',
+      hint: 'indian farmer fertilizer',
     },
   },
   {
@@ -38,7 +38,7 @@ const features = [
     icon: IndianRupee,
     image: {
       src: 'https://picsum.photos/600/401',
-      hint: 'market crops',
+      hint: 'indian vegetable market',
     },
   },
   {
@@ -48,7 +48,7 @@ const features = [
     icon: Thermometer,
     image: {
       src: 'https://picsum.photos/601/400',
-      hint: 'drone farm',
+      hint: 'satellite farm india',
     },
   },
   {
@@ -58,7 +58,7 @@ const features = [
     icon: Sprout,
     image: {
       src: 'https://picsum.photos/600/402',
-      hint: 'sprout soil',
+      hint: 'rice paddy india',
     },
   },
   {
@@ -68,7 +68,7 @@ const features = [
     icon: Handshake,
     image: {
       src: 'https://picsum.photos/601/401',
-      hint: 'handshake deal',
+      hint: 'indian farmers handshake',
     },
   },
   {
@@ -78,7 +78,7 @@ const features = [
     icon: Combine,
     image: {
       src: 'https://picsum.photos/601/402',
-      hint: 'digital farm',
+      hint: 'tea plantation india',
     },
   },
    {
@@ -88,7 +88,7 @@ const features = [
     icon: Network,
     image: {
       src: 'https://picsum.photos/602/402',
-      hint: 'iot sensors',
+      hint: 'smart farm sensors',
     },
   },
   {
@@ -98,7 +98,7 @@ const features = [
     icon: Bug,
     image: {
       src: 'https://picsum.photos/602/403',
-      hint: 'sick plant leaf',
+      hint: 'wheat crop disease',
     },
   },
 ];
