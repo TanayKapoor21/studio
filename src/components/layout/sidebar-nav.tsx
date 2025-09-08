@@ -12,6 +12,7 @@ import {
   Handshake,
   Combine,
   Network,
+  Bug,
 } from 'lucide-react';
 
 import {
@@ -29,6 +30,7 @@ const mainLinks = [
   { href: '/price-prediction', label: 'Price Prediction', icon: DollarSign },
   { href: '/environment', label: 'Environment', icon: Thermometer },
   { href: '/crop-recommendation', label: 'Crop Suggestion', icon: Sprout },
+  { href: '/pest-disease', label: 'Pest & Disease', icon: Bug },
   { href: '/agrimarket', label: 'AgriMarket', icon: Handshake },
   { href: '/digital-twin', label: 'Digital Twin', icon: Combine },
   { href: '/iot-connect', label: 'IoT Connect', icon: Network },

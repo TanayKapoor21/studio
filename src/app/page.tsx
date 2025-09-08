@@ -16,6 +16,7 @@ import {
   Handshake,
   Combine,
   Network,
+  Bug,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -90,6 +91,16 @@ const features = [
       hint: 'iot sensors',
     },
   },
+  {
+    title: 'Pest & Disease Control',
+    description: 'Diagnose crop issues and get AI-driven treatment advice.',
+    href: '/pest-disease',
+    icon: Bug,
+    image: {
+      src: 'https://picsum.photos/602/403',
+      hint: 'sick plant leaf',
+    },
+  },
 ];
 
 export default function DashboardPage() {
@@ -106,7 +117,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {features.map(feature => (
           <Card key={feature.href} className="flex flex-col overflow-hidden">
             <div className="relative h-48 w-full">

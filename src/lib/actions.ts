@@ -5,6 +5,10 @@ import {
   type EnvironmentalMonitoringInsightsInput,
 } from "@/ai/flows/environmental-monitoring-insights";
 import {
+  getPestDiseaseDiagnosis,
+  type PestDiseaseDiagnosisInput,
+} from "@/ai/flows/pest-disease-diagnosis";
+import {
   getPricePredictionAndRecommendations,
   type PricePredictionAndRecommendationsInput,
 } from "@/ai/flows/price-prediction-and-recommendations";
@@ -62,5 +66,17 @@ export async function runCropSuggestion(
   } catch (error) {
     console.error(error);
     return { success: false, error: "Failed to get crop suggestions." };
+  }
+}
+
+export async function runPestDiseaseDiagnosis(
+  input: PestDiseaseDiagnosisInput
+) {
+  try {
+    const result = await getPestDiseaseDiagnosis(input);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error(error);
+    return { success: false, error: "Failed to get pest & disease diagnosis." };
   }
 }
