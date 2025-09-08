@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
   Leaf,
-  DollarSign,
+  IndianRupee,
   Thermometer,
   Sprout,
   Handshake,
@@ -35,7 +35,7 @@ const features = [
     title: 'Price Prediction',
     description: 'Forecast crop prices to maximize your profits.',
     href: '/price-prediction',
-    icon: DollarSign,
+    icon: IndianRupee,
     image: {
       src: 'https://picsum.photos/600/401',
       hint: 'market crops',

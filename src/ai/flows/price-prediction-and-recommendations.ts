@@ -21,7 +21,7 @@ export type PricePredictionAndRecommendationsInput = z.infer<
 const PricePredictionAndRecommendationsOutputSchema = z.object({
   priceForecast: z
     .string()
-    .describe('The predicted price for the crop in Rupees (₹).'),
+    .describe('The predicted price for the crop in Indian Rupees (₹).'),
   recommendations: z
     .string()
     .describe(

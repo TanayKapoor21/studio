@@ -1,4 +1,4 @@
-import { DollarSign } from 'lucide-react';
+import { IndianRupee } from 'lucide-react';
 import { PricePredictionForm } from '@/components/forms/price-prediction-form';
 import { Metadata } from 'next';
 
@@ -10,7 +10,7 @@ export default function PricePredictionPage() {
   return (
     <div className="space-y-8">
       <div className="flex items-center gap-4">
-        <DollarSign className="h-8 w-8 text-primary" />
+        <IndianRupee className="h-8 w-8 text-primary" />
         <div>
           <h1 className="font-headline text-3xl font-bold tracking-tight">
             Crop Price Prediction

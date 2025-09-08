@@ -7,7 +7,7 @@ import {
   Sprout,
   LayoutDashboard,
   Settings,
-  DollarSign,
+  IndianRupee,
   Thermometer,
   Handshake,
   Combine,
@@ -27,7 +27,7 @@ import Image from 'next/image';
 const mainLinks = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/fertilizer', label: 'Fertilizer', icon: Leaf },
-  { href: '/price-prediction', label: 'Price Prediction', icon: DollarSign },
+  { href: '/price-prediction', label: 'Price Prediction', icon: IndianRupee },
   { href: '/environment', label: 'Environment', icon: Thermometer },
   { href: '/crop-recommendation', label: 'Crop Suggestion', icon: Sprout },
   { href: '/pest-disease', label: 'Pest & Disease', icon: Bug },
