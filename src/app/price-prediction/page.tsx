@@ -3,7 +3,7 @@ import { PricePredictionForm } from '@/components/forms/price-prediction-form';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Price Prediction | AgriVision',
+  title: 'Price Prediction | Agrisage',
 };
 
 export default function PricePredictionPage() {

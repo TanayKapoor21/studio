@@ -36,7 +36,7 @@ const formSchema = z.object({
   location: z.string().min(2, 'Location is required.'),
 });
 
-const LOCAL_STORAGE_KEY = 'agrivision_settings';
+const LOCAL_STORAGE_KEY = 'agrisage_settings';
 
 export function EnvironmentForm() {
   const [result, setResult] =

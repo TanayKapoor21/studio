@@ -36,7 +36,7 @@ const formSchema = z.object({
   region: z.string().min(2, 'Region is required.'),
 });
 
-const LOCAL_STORAGE_KEY = 'agrivision_settings';
+const LOCAL_STORAGE_KEY = 'agrisage_settings';
 
 export function CropRecommendationForm() {
   const [result, setResult] =

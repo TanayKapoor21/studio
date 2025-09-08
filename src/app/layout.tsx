@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'AgriVision',
+  title: 'Agrisage',
   description:
     'An AI-Powered & IoT Enabled Centralized Platform for Sustainable Farming',
 };

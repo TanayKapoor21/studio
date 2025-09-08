@@ -3,7 +3,7 @@ import { EnvironmentForm } from '@/components/forms/environment-form';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Environmental Monitoring | AgriVision',
+  title: 'Environmental Monitoring | Agrisage',
 };
 
 export default function EnvironmentPage() {

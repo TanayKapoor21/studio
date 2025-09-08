@@ -65,7 +65,7 @@ export default function DashboardPage() {
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row">
         <div>
           <h1 className="font-headline text-3xl font-bold tracking-tight">
-            Welcome to AgriVision
+            Welcome to Agrisage
           </h1>
           <p className="mt-2 text-muted-foreground">
             Your AI-powered partner for sustainable and intelligent agriculture.

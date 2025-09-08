@@ -33,7 +33,7 @@ const settingsSchema = z.object({
 
 type SettingsFormValues = z.infer<typeof settingsSchema>;
 
-const LOCAL_STORAGE_KEY = 'agrivision_settings';
+const LOCAL_STORAGE_KEY = 'agrisage_settings';
 
 export function SettingsForm() {
   const { toast } = useToast();

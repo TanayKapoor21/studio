@@ -3,7 +3,7 @@ import { CropRecommendationForm } from '@/components/forms/crop-recommendation-f
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Crop Recommendation | AgriVision',
+  title: 'Crop Recommendation | Agrisage',
 };
 
 export default function CropRecommendationPage() {

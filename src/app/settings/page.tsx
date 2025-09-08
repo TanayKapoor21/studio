@@ -3,7 +3,7 @@ import { SettingsForm } from '@/components/forms/settings-form';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Settings | AgriVision',
+  title: 'Settings | Agrisage',
 };
 
 export default function SettingsPage() {

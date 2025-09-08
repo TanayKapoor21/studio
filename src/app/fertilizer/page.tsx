@@ -3,7 +3,7 @@ import { FertilizerForm } from '@/components/forms/fertilizer-form';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Smart Fertilizer Recommendation | AgriVision',
+  title: 'Smart Fertilizer Recommendation | Agrisage',
 };
 
 export default function FertilizerPage() {

@@ -19,6 +19,7 @@ import {
   SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const mainLinks = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -39,11 +40,16 @@ export function SidebarNav() {
     <>
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <Sprout className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-12 w-12 items-center justify-center">
+            <Image
+              src="/agrisage-logo.png"
+              alt="Agrisage Logo"
+              width={48}
+              height={48}
+            />
           </div>
           <span className="text-lg font-bold text-foreground group-data-[collapsible=icon]:hidden">
-            AgriVision
+            Agrisage
           </span>
         </Link>
       </SidebarHeader>
