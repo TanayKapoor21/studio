@@ -13,6 +13,7 @@ import {
   Combine,
   Network,
   Bug,
+  BrainCircuit,
 } from 'lucide-react';
 
 import {
@@ -22,7 +23,6 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
-import Image from 'next/image';
 
 const mainLinks = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -47,13 +47,8 @@ export function SidebarNav() {
     <>
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-12 w-12 items-center justify-center">
-            <Image
-              src="/agrisage-logo.png"
-              alt="Agrisage Logo"
-              width={48}
-              height={48}
-            />
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+            <BrainCircuit className="h-7 w-7 text-primary" />
           </div>
           <span className="text-lg font-bold text-foreground group-data-[collapsible=icon]:hidden">
             Agrisage
